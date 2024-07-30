@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/thinkful-flashcards/static/css/main.dc4d6ff2.css",
-    "main.js": "/thinkful-flashcards/static/js/main.4c7eeb35.js",
+    "main.js": "/thinkful-flashcards/static/js/main.cdfdfe1e.js",
     "index.html": "/thinkful-flashcards/index.html",
     "main.dc4d6ff2.css.map": "/thinkful-flashcards/static/css/main.dc4d6ff2.css.map",
-    "main.4c7eeb35.js.map": "/thinkful-flashcards/static/js/main.4c7eeb35.js.map"
+    "main.cdfdfe1e.js.map": "/thinkful-flashcards/static/js/main.cdfdfe1e.js.map"
   },
   "entrypoints": [
     "static/css/main.dc4d6ff2.css",
-    "static/js/main.4c7eeb35.js"
+    "static/js/main.cdfdfe1e.js"
   ]
 }
