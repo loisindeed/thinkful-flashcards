@@ -7,11 +7,11 @@ import "./App.css";
  */
 
 function App() {
-  return (
-    <div className="app-routes">
-        <Layout />         
-      </div>
-  );
+    return (
+        <div className="app-routes">
+            <Layout />
+        </div>
+    );
 }
 
 export default App;

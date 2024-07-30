@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "./Header";
-import { Outlet } from 'react-router-dom';
 import RootRoutes from "../RootRoutes";
 
 function Layout() {
@@ -9,7 +8,6 @@ function Layout() {
             <Header />
             <div className="container">
                 <RootRoutes />
-                <Outlet />
             </div>
         </>
     );
