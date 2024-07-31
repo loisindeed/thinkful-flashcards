@@ -50,25 +50,26 @@ function ViewDeck() {
     };
 
     return (
-        <div>
-            <p>This is the ViewDeck component for deckId: {deckId}</p>
+        <div className="container mt-4">
             <h1>{deck.name}</h1>
             <p>{deck.description}</p>
-            <Link to={`/decks/${deck.id}/edit`}><button>Edit</button></Link>
-            <Link to={`/decks/${deck.id}/study`}><button>Study</button></Link>
-            <Link to={`/decks/${deck.id}/cards/new`}><button>Add Cards</button></Link>
-            <button onClick={deleteDeckHandler}>Delete</button>
-            <br/>
-            <h1>Cards</h1>
+            <div className="mb-3">
+                <Link to={`/decks/${deck.id}/edit`} className="btn btn-primary me-2">Edit</Link>
+                <Link to={`/decks/${deck.id}/study`} className="btn btn-secondary me-2">Study</Link>
+                <Link to={`/decks/${deck.id}/cards/new`} className="btn btn-success me-2">Add Cards</Link>
+                <button onClick={deleteDeckHandler} className="btn btn-danger">Delete</button>
+            </div>
+            <h2>Cards</h2>
             {deck.cards.map((card) => (
-                <div key={card.id}>
-                    <h3>Card {card.id}</h3>
-                    <p>{card.front}</p>
-                    <p>{card.back}</p>
-                    <Link to={`/decks/${deck.id}/cards/${card.id}/edit`}>
-                        <button>Edit Card</button>
-                    </Link>
-                    <button onClick={() => deleteCardHandler(card.id)}>Delete</button>
+                <div key={card.id} className="card mb-3">
+                    <div className="card-body">
+                        <p className="card-text">{card.front}</p>
+                        <p className="card-text">{card.back}</p>
+                        <Link to={`/decks/${deck.id}/cards/${card.id}/edit`} className="btn btn-primary me-2">
+                            Edit Card
+                        </Link>
+                        <button onClick={() => deleteCardHandler(card.id)} className="btn btn-danger">Delete</button>
+                    </div>
                 </div>
             ))}
         </div>

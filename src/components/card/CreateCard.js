@@ -58,7 +58,7 @@ function CreateCard() {
     if (isLoading) return <p>Loading...</p>;
 
     return (
-        <div>
+        <div className="container mt-4">
             <h1>{deck.name}: Add Card</h1>
             <CardForm
                 formData={formData}

@@ -39,11 +39,11 @@ function StudyDeck() {
 
     if (deck.cards.length <= 2) {
         return (
-            <div>
+            <div className="container mt-4">
                 <h1>{deck.name}</h1>
                 <h2>Not enough cards.</h2>
                 <Link to={`/decks/${deckId}/cards/new`}>
-                    <button>Add Cards</button>
+                    <button className="btn btn-primary">Add Cards</button>
                 </Link>
             </div>
         );
@@ -52,7 +52,7 @@ function StudyDeck() {
     const currentCard = deck.cards[currentCardIndex];
 
     return (
-        <div>
+        <div className="container mt-4">
             <h1>{deck.name}</h1>
             <p>{deck.description}</p>
             <h2>Card {currentCardIndex + 1} of {deck.cards.length}</h2>

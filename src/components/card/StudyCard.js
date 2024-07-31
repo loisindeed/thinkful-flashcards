@@ -17,12 +17,14 @@ function StudyCard({ card, onNext }) {
     };
 
     return (
-        <div>
-            <div>
-                {isFront ? card.front : card.back}
+        <div className="card mb-3">
+            <div className="card-body">
+                <div className="card-text">
+                    {isFront ? card.front : card.back}
+                </div>
+                <button onClick={handleFlip} className="btn btn-secondary me-2">Flip</button>
+                {!isFront && <button onClick={handleNext} className="btn btn-primary">Next</button>}
             </div>
-            <button onClick={handleFlip}>Flip</button>
-            {!isFront && <button onClick={handleNext}>Next</button>}
         </div>
     );
 }

@@ -11,13 +11,15 @@ const DeckCard = ({ deck, deleteHandler }) => {
 
     // shows number of cards, name, description, view button, study button and delete button
     return (
-        <div>
-            <h2>{name}</h2>
-            <p>{description}</p>
-            <p>{cards.length} cards</p>
-            <Link to={`/decks/${deck.id}`}><button>View</button></Link>
-            <Link to={`/decks/${deck.id}/study`}><button>Study</button></Link>
-            <button onClick={() => deleteHandler(deck.id)}>Delete</button>
+        <div className="card mb-3">
+            <div className="card-body">
+                <h2 className="card-title">{name}</h2>
+                <p className="card-text">{description}</p>
+                <p className="card-text">{cards.length} cards</p>
+                <Link to={`/decks/${deck.id}`} className="btn btn-primary me-2">View</Link>
+                <Link to={`/decks/${deck.id}/study`} className="btn btn-secondary me-2">Study</Link>
+                <button onClick={() => deleteHandler(deck.id)} className="btn btn-danger">Delete</button>
+            </div>
         </div>
     );
 };

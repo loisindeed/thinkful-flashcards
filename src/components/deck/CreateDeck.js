@@ -28,33 +28,37 @@ function CreateDeck() {
     };
 
     return (
-        <div>
+        <div className="container mt-4">
             <h1>Create Deck</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="name">
-                    Name<br/>
+                <div className="mb-3">
+                    <label htmlFor="name" className="form-label">
+                        Name
+                    </label>
                     <input
                         id="name"
                         type="text"
                         name="name"
                         placeholder="Deck Name"
+                        className="form-control"
                         onChange={handleChange}
                         value={formData.name}
                     />
-                </label>
-                <br/>
-                <label htmlFor="description">
-                    Description <br/>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="description" className="form-label">
+                        Description
+                    </label>
                     <textarea
                         id="description"
                         name="description"
                         placeholder="Brief description of the deck"
+                        className="form-control"
                         onChange={handleChange}
                         value={formData.description}
                     />
-                </label>
-                <br/>
-                <button type="submit">Submit</button>
+                </div>
+                <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
     );

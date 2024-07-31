@@ -3,32 +3,34 @@ import { Link } from 'react-router-dom';
 
 function CardForm({ formData, handleChange, handleSubmit, deckId }) {
     return (
-        <div>
+        <div className="container mt-4">
             <form onSubmit={handleSubmit}>
-                <label htmlFor="front">
-                    Front <br/>
+                <div className="mb-3">
+                    <label htmlFor="front" className="form-label">Front</label>
                     <textarea
                         id="front"
                         name="front"
                         onChange={handleChange}
                         value={formData.front}
                         placeholder="Front side of card"
+                        className="form-control"
                     />
-                </label>
-                <br/>
-                <label htmlFor="back">
-                    Back<br/>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="back" className="form-label">Back</label>
                     <textarea
                         id="back"
                         name="back"
                         onChange={handleChange}
                         value={formData.back}
                         placeholder="Back side of card"
+                        className="form-control"
                     />
-                </label>
-                <br/>
-                <Link to={`/decks/${deckId}`}><button type="button">Cancel</button></Link>
-                <button type="submit">Save</button>
+                </div>
+                <div className="d-flex justify-content-between">
+                    <Link to={`/decks/${deckId}`} className="btn btn-secondary">Cancel</Link>
+                    <button type="submit" className="btn btn-primary">Save</button>
+                </div>
             </form>
         </div>
     );
