@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function CardForm({ formData, handleChange, handleSubmit, deckId }) {
+    // onSubmit navigation will be in CreateCard and EditCard
     return (
         <form onSubmit={handleSubmit}>
             <label htmlFor="front">

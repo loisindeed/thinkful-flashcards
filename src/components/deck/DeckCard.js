@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // component for card to be shown in Home
-const DeckCard = ({ deck }) => {
+const DeckCard = ({ deck, deleteHandler }) => {
     if (!deck) {
         return <p>Deck not found.</p>;
     }
@@ -17,7 +17,7 @@ const DeckCard = ({ deck }) => {
             <p>{cards.length} cards</p>
             <Link to={`/decks/${deck.id}`}><button>View</button></Link>
             <Link to={`/decks/${deck.id}/study`}><button>Study</button></Link>
-            <button>Delete</button>
+            <button onClick={() => deleteHandler(deck.id)}>Delete</button>
         </div>
     );
 };
