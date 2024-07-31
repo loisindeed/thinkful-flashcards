@@ -4,8 +4,8 @@ import { createDeck } from '../../utils/api/index';
 
 function CreateDeck() {
     const initialFormState = {
-        name: "Deck Name",
-        description: "Brief description of the deck",
+        name: "",
+        description: "",
     };
     const [formData, setFormData] = useState({ ...initialFormState });
     const navigate = useNavigate();
@@ -37,6 +37,7 @@ function CreateDeck() {
                         id="name"
                         type="text"
                         name="name"
+                        placeholder="Deck Name"
                         onChange={handleChange}
                         value={formData.name}
                     />
@@ -47,6 +48,7 @@ function CreateDeck() {
                     <textarea
                         id="description"
                         name="description"
+                        placeholder="Brief description of the deck"
                         onChange={handleChange}
                         value={formData.description}
                     />

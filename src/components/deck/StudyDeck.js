@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { readDeck } from '../../utils/api/index';
 import StudyCard from '../card/StudyCard';
 
@@ -7,6 +7,7 @@ function StudyDeck() {
     const { deckId } = useParams();
     const [deck, setDeck] = useState(null);
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchDeck = async () => {
@@ -22,7 +23,16 @@ function StudyDeck() {
     }, [deckId]);
 
     const handleNext = () => {
-        setCurrentCardIndex((prevIndex) => prevIndex + 1);
+        if (currentCardIndex + 1 < deck.cards.length) {
+            setCurrentCardIndex((prevIndex) => prevIndex + 1);
+        } else {
+            const restart = window.confirm("Restart cards?\n\nClick 'cancel' to return to the home page.");
+            if (restart) {
+                setCurrentCardIndex(0);
+            } else {
+                navigate('/');
+            }
+        }
     };
 
     if (!deck) return <p>Loading...</p>;
@@ -49,8 +59,6 @@ function StudyDeck() {
             {currentCard && (
                 <StudyCard
                     card={currentCard}
-                    cardIndex={currentCardIndex}
-                    totalCards={deck.cards.length}
                     onNext={handleNext}
                 />
             )}

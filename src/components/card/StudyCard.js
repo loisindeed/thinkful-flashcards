@@ -1,27 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-function StudyCard({ card, cardIndex, totalCards, onNext }) {
-    const [isFlipped, setIsFlipped] = useState(false);
+function StudyCard({ card, onNext }) {
+    const [isFront, setIsFront] = useState(true);
 
     const handleFlip = () => {
-        setIsFlipped(!isFlipped);
-    };
-    const handleNext = () => {
-        setIsFlipped(false); // reset the flip state
-        onNext();
+        setIsFront(!isFront);
     };
 
-    useEffect(() => {
-        setIsFlipped(false);
-    }, [cardIndex]);
+    const handleNext = () => {
+        if (!isFront) {
+            onNext();
+            setIsFront(true);
+        } else {
+            handleFlip();
+        }
+    };
 
     return (
         <div>
-            <p>{isFlipped ? card.back : card.front}</p>
+            <div>
+                {isFront ? card.front : card.back}
+            </div>
             <button onClick={handleFlip}>Flip</button>
-            {isFlipped && cardIndex < totalCards - 1 && (
-                <button onClick={handleNext}>Next</button>
-            )}
+            {!isFront && <button onClick={handleNext}>Next</button>}
         </div>
     );
 }

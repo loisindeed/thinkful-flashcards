@@ -6,8 +6,8 @@ import CardForm from './CardForm';
 function CreateCard() {
     const { deckId } = useParams();
     const initialFormState = {
-        front: "Front side of card",
-        back: "Back side of card",
+        front: "",
+        back: "",
     };
     const [formData, setFormData] = useState(initialFormState);
     const [deck, setDeck] = useState(null);
@@ -46,7 +46,7 @@ function CreateCard() {
         event.preventDefault();
         const abortController = new AbortController();
         try {
-            await createCard(deckId, { ...formData }, abortController.signal);
+            await createCard(deckId, formData, abortController.signal);
             navigate(`/decks/${deckId}`);
         } catch (error) {
             if (error.name !== 'AbortError') {
