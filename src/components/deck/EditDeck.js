@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from "react";
-import {Link, useParams} from "react-router-dom";
-import { readDeck } from "../../utils/api/index";
+import React, { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { readDeck, updateDeck } from "../../utils/api/index";
 
 function EditDeck() {
     const { deckId } = useParams();
+    const navigate = useNavigate();
     const initialFormState = {
         name: "",
         description: "",
@@ -16,8 +17,8 @@ function EditDeck() {
                 const foundDeck = await readDeck(deckId);
                 if (foundDeck) {
                     setFormData({
-                        name: foundDeck.name, // existing name
-                        description: foundDeck.description, // existing description
+                        name: foundDeck.name,
+                        description: foundDeck.description,
                     });
                 }
             } catch (error) {
@@ -34,10 +35,21 @@ function EditDeck() {
             [target.name]: target.value,
         });
     };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            await updateDeck({ ...formData, id: deckId });
+            navigate(`/decks/${deckId}`);
+        } catch (error) {
+            console.error("Failed to update deck", error);
+        }
+    };
+
     return (
         <div>
             <h1>Edit Deck</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="name">
                     Name<br/>
                     <input
@@ -59,11 +71,11 @@ function EditDeck() {
                     />
                 </label>
                 <br/>
-                <Link to={`/decks/${deckId}`}><button>Cancel</button></Link>
+                <Link to={`/decks/${deckId}`}><button type="button">Cancel</button></Link>
                 <button type="submit">Submit</button>
             </form>
         </div>
-    )
+    );
 }
 
-export default EditDeck
+export default EditDeck;

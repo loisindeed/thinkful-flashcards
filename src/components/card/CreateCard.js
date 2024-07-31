@@ -6,8 +6,8 @@ import CardForm from './CardForm';
 function CreateCard() {
     const { deckId } = useParams();
     const initialFormState = {
-        front: "",
-        back: "",
+        front: "Front side of card",
+        back: "Back side of card",
     };
     const [formData, setFormData] = useState(initialFormState);
     const [deck, setDeck] = useState(null);
@@ -59,8 +59,7 @@ function CreateCard() {
 
     return (
         <div>
-            <h1>{deck.name}</h1>
-            <h2>Add Card</h2>
+            <h1>{deck.name}: Add Card</h1>
             <CardForm
                 formData={formData}
                 handleChange={handleChange}
